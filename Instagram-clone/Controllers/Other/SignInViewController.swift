@@ -159,6 +159,10 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     // Mark: - Actions
     
     @objc func didTapSignIn() {
+        
+        emailField.resignFirstResponder()
+        passwordField.resignFirstResponder()
+
         guard let email = emailField.text,
               let password = passwordField.text,
               !email.trimmingCharacters(in: .whitespaces).isEmpty,
