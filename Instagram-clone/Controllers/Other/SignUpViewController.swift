@@ -32,7 +32,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         
         return textField
     }()
-    
+     
     private let emailField: IGTextField = {
         let textField = IGTextField()
         textField.placeholder = "Email"
@@ -81,6 +81,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         
         return button
     }()
+    
+    public var completion: (() -> Void)?
     
     //MARK: - Lifecycle
     
@@ -216,7 +218,29 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
             
         }
         
+        let data = profilePictureImageView.image?.pngData()
+        
         // sign up with AuthManager
+        AuthManager.shared.signUp(
+            email: email,
+            username: username,
+            password: password,
+            profilePicture: data) { [weak self] result in
+                switch result {
+                case .success(let user):
+                    DispatchQueue.main.async {
+                        
+                        UserDefaults.standard.setValue(user.email, forKey: "email")
+                        UserDefaults.standard.setValue(user.username, forKey: "username")
+                        
+                        self?.navigationController?.popToRootViewController(animated: true)
+                        self?.completion?()
+                    }
+                case .failure(let failure):
+                    print("\n\nSign Up Error: \(failure)")
+                }
+            }
+        
     }
     
     private func presentError() {
