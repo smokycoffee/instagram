@@ -17,6 +17,13 @@
 		E23B6D1429C0F4C8006947B7 /* SignInHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23B6D1329C0F4C8006947B7 /* SignInHeaderView.swift */; };
 		E23B6D1629C0F594006947B7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23B6D1529C0F594006947B7 /* Extensions.swift */; };
 		E23B6D1829C102E0006947B7 /* IGTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23B6D1729C102E0006947B7 /* IGTextField.swift */; };
+		E2F048F329C5D1A60019C9FE /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = E2F048F229C5D1A60019C9FE /* SDWebImage */; };
+		E2F048F629C5D2550019C9FE /* PosterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F048F529C5D2550019C9FE /* PosterCollectionViewCell.swift */; };
+		E2F048F829C5D2CA0019C9FE /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F048F729C5D2CA0019C9FE /* PostCollectionViewCell.swift */; };
+		E2F048FA29C5D2ED0019C9FE /* PostLikesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F048F929C5D2ED0019C9FE /* PostLikesCollectionViewCell.swift */; };
+		E2F048FC29C5D2FC0019C9FE /* PostActionsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F048FB29C5D2FC0019C9FE /* PostActionsCollectionViewCell.swift */; };
+		E2F048FE29C5D3080019C9FE /* PostCaptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F048FD29C5D3080019C9FE /* PostCaptionCollectionViewCell.swift */; };
+		E2F0490029C5D3110019C9FE /* PostDateTimeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F048FF29C5D3110019C9FE /* PostDateTimeCollectionViewCell.swift */; };
 		E2FCA43E29BF329A00857F8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FCA43D29BF329A00857F8D /* AppDelegate.swift */; };
 		E2FCA44029BF329A00857F8D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FCA43F29BF329A00857F8D /* SceneDelegate.swift */; };
 		E2FCA44229BF329A00857F8D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FCA44129BF329A00857F8D /* HomeViewController.swift */; };
@@ -61,6 +68,12 @@
 		E23B6D1329C0F4C8006947B7 /* SignInHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInHeaderView.swift; sourceTree = "<group>"; };
 		E23B6D1529C0F594006947B7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E23B6D1729C102E0006947B7 /* IGTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGTextField.swift; sourceTree = "<group>"; };
+		E2F048F529C5D2550019C9FE /* PosterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterCollectionViewCell.swift; sourceTree = "<group>"; };
+		E2F048F729C5D2CA0019C9FE /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
+		E2F048F929C5D2ED0019C9FE /* PostLikesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLikesCollectionViewCell.swift; sourceTree = "<group>"; };
+		E2F048FB29C5D2FC0019C9FE /* PostActionsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostActionsCollectionViewCell.swift; sourceTree = "<group>"; };
+		E2F048FD29C5D3080019C9FE /* PostCaptionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCaptionCollectionViewCell.swift; sourceTree = "<group>"; };
+		E2F048FF29C5D3110019C9FE /* PostDateTimeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDateTimeCollectionViewCell.swift; sourceTree = "<group>"; };
 		E2FCA43A29BF329A00857F8D /* Instagram-clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Instagram-clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2FCA43D29BF329A00857F8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2FCA43F29BF329A00857F8D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2F048F329C5D1A60019C9FE /* SDWebImage in Frameworks */,
 				E2FCA45329BF35EC00857F8D /* FirebaseAnalytics in Frameworks */,
 				E2FCA45929BF35EC00857F8D /* FirebaseStorage in Frameworks */,
 				E2FCA45529BF35EC00857F8D /* FirebaseAuth in Frameworks */,
@@ -107,6 +121,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E2F048F429C5D2330019C9FE /* HomeCells */ = {
+			isa = PBXGroup;
+			children = (
+				E2F048F529C5D2550019C9FE /* PosterCollectionViewCell.swift */,
+				E2F048F729C5D2CA0019C9FE /* PostCollectionViewCell.swift */,
+				E2F048F929C5D2ED0019C9FE /* PostLikesCollectionViewCell.swift */,
+				E2F048FB29C5D2FC0019C9FE /* PostActionsCollectionViewCell.swift */,
+				E2F048FD29C5D3080019C9FE /* PostCaptionCollectionViewCell.swift */,
+				E2F048FF29C5D3110019C9FE /* PostDateTimeCollectionViewCell.swift */,
+			);
+			path = HomeCells;
+			sourceTree = "<group>";
+		};
 		E2FCA43129BF329A00857F8D = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +176,7 @@
 		E2FCA45B29BF38C100857F8D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E2F048F429C5D2330019C9FE /* HomeCells */,
 				E2FCA44829BF329B00857F8D /* LaunchScreen.storyboard */,
 				E23B6D1329C0F4C8006947B7 /* SignInHeaderView.swift */,
 				E23B6D1729C102E0006947B7 /* IGTextField.swift */,
@@ -253,6 +281,7 @@
 				E2FCA45629BF35EC00857F8D /* FirebaseFirestore */,
 				E2FCA45829BF35EC00857F8D /* FirebaseStorage */,
 				E2FCA48C29BF425600857F8D /* SnapKit */,
+				E2F048F229C5D1A60019C9FE /* SDWebImage */,
 			);
 			productName = "Instagram-clone";
 			productReference = E2FCA43A29BF329A00857F8D /* Instagram-clone.app */;
@@ -285,6 +314,7 @@
 			packageReferences = (
 				E2FCA45129BF35EC00857F8D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				E2FCA48B29BF425600857F8D /* XCRemoteSwiftPackageReference "SnapKit" */,
+				E2F048F129C5D1A60019C9FE /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = E2FCA43B29BF329A00857F8D /* Products */;
 			projectDirPath = "";
@@ -318,6 +348,7 @@
 				E2FCA48029BF3B9100857F8D /* Notification.swift in Sources */,
 				E2FCA48629BF3BCC00857F8D /* StorageManager.swift in Sources */,
 				E2FCA47429BF3B3200857F8D /* ListViewController.swift in Sources */,
+				E2F048F829C5D2CA0019C9FE /* PostCollectionViewCell.swift in Sources */,
 				E2FCA48829BF3BD600857F8D /* AnalyticsManagerj.swift in Sources */,
 				E237A03629C519A90049714A /* PostActionsCollectionViewCellVIewModel.swift in Sources */,
 				E2FCA47629BF3B3D00857F8D /* PostViewController.swift in Sources */,
@@ -329,8 +360,10 @@
 				E2FCA47A29BF3B6C00857F8D /* User.swift in Sources */,
 				E237A03C29C51A470049714A /* PostDateTimeCollectionViewCellViewModel.swift in Sources */,
 				E2FCA47029BF3B1300857F8D /* SignUpViewController.swift in Sources */,
+				E2F048FC29C5D2FC0019C9FE /* PostActionsCollectionViewCell.swift in Sources */,
 				E23B6D1429C0F4C8006947B7 /* SignInHeaderView.swift in Sources */,
 				E2FCA46729BF3A9000857F8D /* NotificationsViewController.swift in Sources */,
+				E2F048FA29C5D2ED0019C9FE /* PostLikesCollectionViewCell.swift in Sources */,
 				E23B6D1829C102E0006947B7 /* IGTextField.swift in Sources */,
 				E237A03E29C51AD80049714A /* HomeFeedCellType.swift in Sources */,
 				E237A03829C519D60049714A /* PostLikesCollectionViewCellViewModel.swift in Sources */,
@@ -342,10 +375,13 @@
 				E2FCA48229BF3BAB00857F8D /* AuthManager.swift in Sources */,
 				E2FCA46E29BF3AFC00857F8D /* SignInViewController.swift in Sources */,
 				E23B6D1629C0F594006947B7 /* Extensions.swift in Sources */,
+				E2F0490029C5D3110019C9FE /* PostDateTimeCollectionViewCell.swift in Sources */,
 				E2FCA46929BF3AA200857F8D /* ProfileViewController.swift in Sources */,
 				E2FCA48A29BF3BE000857F8D /* HapticsManager.swift in Sources */,
+				E2F048F629C5D2550019C9FE /* PosterCollectionViewCell.swift in Sources */,
 				E2FCA43E29BF329A00857F8D /* AppDelegate.swift in Sources */,
 				E2FCA44029BF329A00857F8D /* SceneDelegate.swift in Sources */,
+				E2F048FE29C5D3080019C9FE /* PostCaptionCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,6 +597,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E2F048F129C5D1A60019C9FE /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 5.9.0;
+			};
+		};
 		E2FCA45129BF35EC00857F8D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -580,6 +624,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E2F048F229C5D1A60019C9FE /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E2F048F129C5D1A60019C9FE /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
 		E2FCA45229BF35EC00857F8D /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E2FCA45129BF35EC00857F8D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
