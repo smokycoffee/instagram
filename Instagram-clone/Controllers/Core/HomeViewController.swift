@@ -70,7 +70,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 // or fatalError()
             }
             cell.configure(with: viewModel)
-            cell.contentView.backgroundColor = UIColor.random
+//            cell.contentView.backgroundColor = UIColor.random
             return cell
             
         case .post(let viewModel):
