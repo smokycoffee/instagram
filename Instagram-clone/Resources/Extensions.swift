@@ -61,3 +61,20 @@ extension UIColor {
                        alpha: 1)
     }
 }
+
+extension DateFormatter {
+    static let formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        return formatter
+    }()
+}
+
+extension String {
+    static func date(from date: Date) -> String? {
+        let formatter = DateFormatter.formatter
+        let string = formatter.string(for: date)
+        return string
+    }
+}

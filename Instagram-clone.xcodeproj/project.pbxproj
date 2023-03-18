@@ -126,8 +126,8 @@
 			children = (
 				E2F048F529C5D2550019C9FE /* PosterCollectionViewCell.swift */,
 				E2F048F729C5D2CA0019C9FE /* PostCollectionViewCell.swift */,
-				E2F048F929C5D2ED0019C9FE /* PostLikesCollectionViewCell.swift */,
 				E2F048FB29C5D2FC0019C9FE /* PostActionsCollectionViewCell.swift */,
+				E2F048F929C5D2ED0019C9FE /* PostLikesCollectionViewCell.swift */,
 				E2F048FD29C5D3080019C9FE /* PostCaptionCollectionViewCell.swift */,
 				E2F048FF29C5D3110019C9FE /* PostDateTimeCollectionViewCell.swift */,
 			);

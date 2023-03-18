@@ -38,8 +38,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             .poster(viewModel: PosterCollectionViewCellViewModel(username: "admin", profilePictureUrl: URL(string: "https://i.pinimg.com/originals/c0/97/8c/c0978c0f0ac5fb1619687ab6bbb40dd7.jpg")!)),
             .post(viewModel: PostCollectionViewCellViewModel(postUrl: URL(string: "https://i.pinimg.com/originals/c0/97/8c/c0978c0f0ac5fb1619687ab6bbb40dd7.jpg")!)),
             .actions(viewModel: PostActionsCollectionViewCellVIewModel(isLiked: true)),
-            .likeCount(viewModel: PostLikesCollectionViewCellViewModel(likers: ["david"])),
-            .caption(viewModel: PostCaptionCollectionViewCellViewModel(username: "admin", caption: "mock data caption")),
+            .likeCount(viewModel: PostLikesCollectionViewCellViewModel(likers: ["david", "ss"])),
+            .caption(viewModel: PostCaptionCollectionViewCellViewModel(username: "admin", caption: "Working on the instagram cells. Instagram within instagram #inception :)")),
             .timestamp(viewModel: PostDateTimeCollectionViewCellViewModel(date: Date()))
         ]
         
@@ -70,7 +70,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 // or fatalError()
             }
             cell.configure(with: viewModel)
-//            cell.contentView.backgroundColor = UIColor.random
             return cell
             
         case .post(let viewModel):
@@ -80,8 +79,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 // or fatalError()
             }
             cell.configure(with: viewModel)
-            cell.contentView.backgroundColor = UIColor.random
             return cell
+            
         case .actions(let viewModel):
             
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostActionsCollectionViewCell.identifier, for: indexPath) as? PostActionsCollectionViewCell else {
@@ -89,7 +88,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 // or fatalError()
             }
             cell.configure(with: viewModel)
-            cell.contentView.backgroundColor = UIColor.random
             return cell
             
         case .likeCount(let viewModel):
@@ -99,8 +97,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 // or fatalError()
             }
             cell.configure(with: viewModel)
-            cell.contentView.backgroundColor = UIColor.random
             return cell
+
             
         case .caption(let viewModel):
             
@@ -109,7 +107,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 // or fatalError()
             }
             cell.configure(with: viewModel)
-            cell.contentView.backgroundColor = UIColor.random
             return cell
             
         case .timestamp(let viewModel):
@@ -118,7 +115,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 // or fatalError()
             }
             cell.configure(with: viewModel)
-            cell.contentView.backgroundColor = UIColor.random
             return cell
             
         }
