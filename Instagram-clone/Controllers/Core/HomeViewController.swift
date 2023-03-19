@@ -43,8 +43,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             .caption(viewModel: PostCaptionCollectionViewCellViewModel(username: "admin", caption: "Working on the instagram cells. Instagram within instagram #inception :)")),
             .timestamp(viewModel: PostDateTimeCollectionViewCellViewModel(date: Date()))
         ]
-        
-        viewModels.append(postData)
+        for _ in 1...10 {
+            viewModels.append(postData)
+        }
         collectionView?.reloadData()
     }
     
