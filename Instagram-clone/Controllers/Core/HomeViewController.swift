@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
    
     private var collectionView: UICollectionView?
     
@@ -70,6 +71,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 // or fatalError()
             }
             cell.configure(with: viewModel)
+            cell.delegate = self
             return cell
             
         case .post(let viewModel):
@@ -79,6 +81,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 // or fatalError()
             }
             cell.configure(with: viewModel)
+            cell.delegate = self
             return cell
             
         case .actions(let viewModel):
@@ -88,6 +91,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 // or fatalError()
             }
             cell.configure(with: viewModel)
+            cell.delegate = self
             return cell
             
         case .likeCount(let viewModel):
@@ -97,6 +101,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 // or fatalError()
             }
             cell.configure(with: viewModel)
+            cell.delegate = self
             return cell
 
             
@@ -107,6 +112,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 // or fatalError()
             }
             cell.configure(with: viewModel)
+            cell.delegate = self
             return cell
             
         case .timestamp(let viewModel):
@@ -120,6 +126,67 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
 
+}
+
+extension HomeViewController: PosterCollectionViewCellDelegate {
+    func posterCollectionViewCellDidTapMore(_ cell: PosterCollectionViewCell) {
+        print("tapped more")
+        let sheet = UIAlertController(title: "Post Actions", message: nil, preferredStyle: .actionSheet)
+        sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        sheet.addAction(UIAlertAction(title: "Share Post", style: .default))
+        sheet.addAction(UIAlertAction(title: "Report Post", style: .destructive))
+        
+        present(sheet, animated: true)
+    }
+    
+    func posterCollectionViewCellDidTapUsername(_ cell: PosterCollectionViewCell) {
+        print("tapped username")
+        let vc = ProfileViewController(user: User(username: "admin", email: "admin@gmail.com"))
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension HomeViewController: PostCollectionViewCellDelegate {
+    func postCollectionViewCellDidTapLike(_ cell: PostCollectionViewCell) {
+        print("liked post")
+    }
+}
+
+extension HomeViewController: PostActionsCollectionViewCellDelegate {
+    func postActionsCollectionViewCellDidTapLike(_ cell: PostActionsCollectionViewCell, isLiked: Bool) {
+        print("liked")
+        
+        // call database to update liked and unlike state
+        
+    }
+    
+    func postActionsCollectionViewCellDidTapComments(_ cell: PostActionsCollectionViewCell) {
+        let vc = PostViewController()
+        vc.title = "Post"
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func postActionsCollectionViewCellDidTapShare(_ cell: PostActionsCollectionViewCell) {
+        print("tapped share")
+        let vc = UIActivityViewController(activityItems: ["sharing to instagram within instagram O.O"], applicationActivities: [])
+        present(vc, animated: true)
+    }
+}
+
+extension HomeViewController: PostLikesCollectionViewCellDelegate {
+    func postLikesCollectionViewCellDidTapLikeCount(_ cell: PostLikesCollectionViewCell) {
+        print("tapped like count")
+        let vc = ListViewController()
+        
+        vc.title = "Likes"
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension HomeViewController: PostCaptionCollectionViewCellDelegate {
+    func postCaptionCollectionViewCellDidTapCaption(_ cell: PostCaptionCollectionViewCell) {
+        print("tapped caption")
+    }
 }
 
 extension HomeViewController {
