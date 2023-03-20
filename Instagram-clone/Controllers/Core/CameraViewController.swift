@@ -14,15 +14,30 @@ class CameraViewController: UIViewController {
     private var output = AVCapturePhotoOutput()
     private var captureSession: AVCaptureSession?
     private let previewLayer = AVCaptureVideoPreviewLayer()
+    
+    private let cameraView = UIView()
+    
+    private let shutterButton: UIButton = {
+        let button = UIButton()
+        button.layer.masksToBounds = true
+        button.layer.borderWidth = 2
+        button.layer.borderColor = UIColor.label.cgColor
+        button.backgroundColor = nil
+        
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Take Photo"
-        view.backgroundColor = .black
+        view.backgroundColor = .secondarySystemBackground
+        view.addSubview(cameraView)
+        view.addSubview(shutterButton)
         setupNavBar()
         checkCameraPermission()
-        setUpCamera()
+//        setUpCamera()
+        shutterButton.addTarget(self, action: #selector(didTapTakePhoto), for: .touchUpInside)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -40,9 +55,24 @@ class CameraViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        cameraView.snp.makeConstraints { make in
+            make.width.height.equalToSuperview()
+        }
         //        layer.frame = view.layer.bounds
         previewLayer.frame = CGRect(x: 0, y: view.safeAreaInsets.top, width: view.width, height: view.width)
-
+        
+        let buttonSize: CGFloat = view.width / 5
+        shutterButton.snp.makeConstraints { make in
+            make.width.height.equalTo(buttonSize)
+            make.top.equalTo(view.safeAreaInsets.top + view.width + 100)
+            make.centerX.equalTo(view.snp.centerX)
+        }
+        shutterButton.layer.cornerRadius = buttonSize / 2
+    }
+    
+    @objc func didTapTakePhoto() {
+        print("take photo ")
+        output.capturePhoto(with: AVCapturePhotoSettings(), delegate: self)
     }
     
     @objc func didTapClose() {
@@ -78,7 +108,7 @@ class CameraViewController: UIViewController {
             // layers
             previewLayer.session = captureSession
             previewLayer.videoGravity = .resizeAspectFill
-            view.layer.addSublayer(previewLayer)
+            cameraView.layer.addSublayer(previewLayer)
             captureSession.startRunning()
         }
     }
@@ -107,4 +137,19 @@ class CameraViewController: UIViewController {
         }
     }
 
+}
+
+extension CameraViewController: AVCapturePhotoCaptureDelegate {
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        guard let data = photo.fileDataRepresentation(), let image = UIImage(data: data) else { // photo.fileDataRepresentation is an optional thus the reason we are unwrapping
+            return
+        }
+        
+        captureSession?.stopRunning()
+        
+        let vc = PostEditViewController(image: image)
+        vc.navigationItem.backButtonDisplayMode = .minimal
+        navigationController?.pushViewController(vc, animated: false)
+        
+    }
 }

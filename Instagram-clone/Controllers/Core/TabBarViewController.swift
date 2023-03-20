@@ -38,6 +38,8 @@ class TabBarViewController: UITabBarController {
         nav3.navigationBar.tintColor = .label
         nav4.navigationBar.tintColor = .label
         nav5.navigationBar.tintColor = .label
+        
+        nav3.navigationItem.backButtonDisplayMode = .minimal
 
         // Define tab items
         nav1.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 1)
