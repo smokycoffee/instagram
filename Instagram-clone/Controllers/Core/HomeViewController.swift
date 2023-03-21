@@ -34,19 +34,81 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     private func fetchPosts() {
-        // mock data
-        let postData: [HomeFeedCellType] = [
-            .poster(viewModel: PosterCollectionViewCellViewModel(username: "admin", profilePictureUrl: URL(string: "https://i.pinimg.com/originals/c0/97/8c/c0978c0f0ac5fb1619687ab6bbb40dd7.jpg")!)),
-            .post(viewModel: PostCollectionViewCellViewModel(postUrl: URL(string: "https://i.pinimg.com/originals/c0/97/8c/c0978c0f0ac5fb1619687ab6bbb40dd7.jpg")!)),
-            .actions(viewModel: PostActionsCollectionViewCellVIewModel(isLiked: true)),
-            .likeCount(viewModel: PostLikesCollectionViewCellViewModel(likers: ["david", "ss"])),
-            .caption(viewModel: PostCaptionCollectionViewCellViewModel(username: "admin", caption: "Working on the instagram cells. Instagram within instagram #inception :)")),
-            .timestamp(viewModel: PostDateTimeCollectionViewCellViewModel(date: Date()))
-        ]
-        for _ in 1...10 {
-            viewModels.append(postData)
+        guard let username = UserDefaults.standard.string(forKey: "username") else {return}
+        DatabaseManager.shared.posts(for: username) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let posts):
+                    print("\n\n\n posts: \(posts.count)")
+                    
+                    let group = DispatchGroup()
+                    
+                    posts.forEach { model in
+                        group.enter()
+                        self?.createViewModel(model: model, username: username, completion: { success in
+                            defer {
+                                group.leave()
+                            }
+                            if !success {
+                                print(" failed to build view model")
+                            }
+                        })
+                    }
+                    
+                    group.notify(queue: .main) {
+                        self?.collectionView?.reloadData()
+                    }
+                    
+                case .failure(let failure):
+                    print(failure)
+                }
+            }
         }
-        collectionView?.reloadData()
+    }
+    
+    func createViewModel(model: Post, username: String, completion: @escaping (Bool)-> Void) {
+        
+//        let group = DispatchGroup()
+//        group.enter()
+//        group.enter()
+        
+//        var postURL: URL?
+//        var profilePictureURL: URL?
+//        StorageManager.shared.downloadURL(for: model) { url in
+//            postURL = url
+//            group.leave()
+//        }
+//
+//        StorageManager.shared.profilePictureURL(for: username) { url in
+//            profilePictureURL = url
+//            group.leave()
+//        }
+        
+        StorageManager.shared.downloadURL(for: model) { postURL in
+            
+            StorageManager.shared.profilePictureURL(for: username) { [ weak self] profilePictureURL in
+                guard let postURL = postURL, let profilePictureURL = profilePictureURL else {
+                    return
+                }
+                
+                let postData: [HomeFeedCellType] = [
+                    .poster(viewModel: PosterCollectionViewCellViewModel(username: username, profilePictureUrl: profilePictureURL)),
+                    .post(viewModel: PostCollectionViewCellViewModel(postUrl: postURL)),
+                    .actions(viewModel: PostActionsCollectionViewCellVIewModel(isLiked: false)),
+                    .likeCount(viewModel: PostLikesCollectionViewCellViewModel(likers: [])),
+                    .caption(viewModel: PostCaptionCollectionViewCellViewModel(username: username, caption: model.caption)),
+                    .timestamp(viewModel: PostDateTimeCollectionViewCellViewModel(date: DateFormatter.formatter.date(from: model.postedDate) ?? Date() ))
+                ]
+                
+                self?.viewModels.append(postData)
+                completion(true)
+            }
+        }
+        
+        
+//        group.notify(queue: .main) {
+//
+//        }
     }
     
     // CollectionView
