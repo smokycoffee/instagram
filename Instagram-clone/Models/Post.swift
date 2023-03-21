@@ -11,6 +11,7 @@ struct Post: Codable {
     let id: String
     let caption: String
     let postedDate: String
+    let postURLString: String
     var likers: [String]
     
     var storageReference: String? {

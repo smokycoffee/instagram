@@ -84,10 +84,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 //            group.leave()
 //        }
         
-        StorageManager.shared.downloadURL(for: model) { postURL in
             
             StorageManager.shared.profilePictureURL(for: username) { [ weak self] profilePictureURL in
-                guard let postURL = postURL, let profilePictureURL = profilePictureURL else {
+                guard let postURL = URL(string: model.postURLString), let profilePictureURL = profilePictureURL else {
                     return
                 }
                 
@@ -99,12 +98,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     .caption(viewModel: PostCaptionCollectionViewCellViewModel(username: username, caption: model.caption)),
                     .timestamp(viewModel: PostDateTimeCollectionViewCellViewModel(date: DateFormatter.formatter.date(from: model.postedDate) ?? Date() ))
                 ]
-                
                 self?.viewModels.append(postData)
                 completion(true)
             }
-        }
-        
         
 //        group.notify(queue: .main) {
 //

@@ -62,26 +62,25 @@ class CaptionViewController: UIViewController, UITextViewDelegate {
             return
         }
         // upload post
-        StorageManager.shared.uploadPost(data: image.pngData(), id: newPostID) { success in
-            guard success else {
+        StorageManager.shared.uploadPost(data: image.pngData(), id: newPostID) { newPostDownload in
+            guard let url = newPostDownload else {
                 print("error: failed to upload")
                 return
             }
-        }
-        
-        // New POst
-        
-        let newPost = Post(id: newPostID, caption: caption, postedDate: String.date(from: Date()) ?? "", likers: [])
-        
-        // update database
-        DatabaseManager.shared.createPost(newPost: newPost) { [weak self] finished in
-            guard finished else {
-                return
-            }
-            DispatchQueue.main.async {
-                self?.tabBarController?.tabBar.isHidden = false
-                self?.tabBarController?.selectedIndex = 0
-                self?.navigationController?.popToRootViewController(animated: false)
+            // New POst
+            
+            let newPost = Post(id: newPostID, caption: caption, postedDate: String.date(from: Date()) ?? "", postURLString: url.absoluteString, likers: [])
+            
+            // update database
+            DatabaseManager.shared.createPost(newPost: newPost) { [weak self] finished in
+                guard finished else {
+                    return
+                }
+                DispatchQueue.main.async {
+                    self?.tabBarController?.tabBar.isHidden = false
+                    self?.tabBarController?.selectedIndex = 0
+                    self?.navigationController?.popToRootViewController(animated: false)
+                }
             }
         }
     }
