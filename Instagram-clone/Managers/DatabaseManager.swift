@@ -66,5 +66,24 @@ final class DatabaseManager {
             completion(error == nil)
         }
     }
+    
+    
+    public func findUsers(with usernamePrefix: String, completion: @escaping ([User]) -> Void) {
+        
+        let ref = database.collection("users")
+        ref.getDocuments { snapshot, error in
+            guard let users = snapshot?.documents.compactMap({ User(with: $0.data()) }), error == nil else {
+                completion([])
+                return
+            }
+            
+            let subset = users.filter {
+                $0.username.lowercased().hasPrefix(usernamePrefix.lowercased())
+            }
+            
+            completion(subset)
+        }
+    }
+    
 }
 
