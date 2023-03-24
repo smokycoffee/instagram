@@ -40,7 +40,7 @@ class CaptionViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = .systemBackground
         view.addSubview(imageView)
         imageView.image = image
         view.addSubview(textView)
@@ -111,7 +111,7 @@ class CaptionViewController: UIViewController, UITextViewDelegate {
         textView.snp.makeConstraints { make in
             make.width.equalTo(view.width-40)
             make.height.equalTo(100)
-            make.top.equalTo(imageView.bottom).offset(20)
+            make.top.equalTo(imageView.snp.bottom).offset(20)
             make.leading.trailing.equalToSuperview().inset(10)
         }
     }

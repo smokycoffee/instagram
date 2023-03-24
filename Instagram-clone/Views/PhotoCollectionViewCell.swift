@@ -15,6 +15,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFit
         imageView.contentMode = .scaleAspectFill
         imageView.tintColor = .label
         return imageView

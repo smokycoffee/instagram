@@ -17,7 +17,7 @@ final class DatabaseManager {
     let database = Firestore.firestore()
     
     public func posts(for username: String, completion: @escaping (Result<[Post], Error>) -> Void) {
-        let ref = database.collection("users").document(username).collection("users")
+        let ref = database.collection("users").document(username).collection("posts")
         
         ref.getDocuments { snapshot, error in
             guard let posts = snapshot?.documents.compactMap({

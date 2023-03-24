@@ -62,13 +62,14 @@ class PostEditViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
         imageView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaInsets.top)
             make.width.height.equalTo(view.width)
         }
         
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(imageView.bottom).offset(20)
+            make.top.equalTo(imageView.snp.bottom)
             make.width.equalTo(view.width)
             make.height.equalTo(100)
         }
