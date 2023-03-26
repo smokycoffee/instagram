@@ -19,7 +19,13 @@
 		E23B6D1429C0F4C8006947B7 /* SignInHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23B6D1329C0F4C8006947B7 /* SignInHeaderView.swift */; };
 		E23B6D1629C0F594006947B7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23B6D1529C0F594006947B7 /* Extensions.swift */; };
 		E23B6D1829C102E0006947B7 /* IGTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23B6D1729C102E0006947B7 /* IGTextField.swift */; };
+		E28EBFFA29CF848900B8BB0E /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28EBFF929CF848900B8BB0E /* NotificationsManager.swift */; };
+		E28EBFFC29D063E400B8BB0E /* NotificationCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28EBFFB29D063E400B8BB0E /* NotificationCellType.swift */; };
+		E28EC00029D0691500B8BB0E /* NotificationCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28EBFFF29D0691500B8BB0E /* NotificationCellViewModel.swift */; };
 		E2B1047629CB2A850030DA42 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B1047529CB2A850030DA42 /* SearchResultsViewController.swift */; };
+		E2C0D7D329CF823500540B5B /* FollowNotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C0D7D229CF823500540B5B /* FollowNotificationTableViewCell.swift */; };
+		E2C0D7D529CF825800540B5B /* LikeNotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C0D7D429CF825800540B5B /* LikeNotificationTableViewCell.swift */; };
+		E2C0D7D729CF826500540B5B /* CommentNotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C0D7D629CF826500540B5B /* CommentNotificationTableViewCell.swift */; };
 		E2F048F329C5D1A60019C9FE /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = E2F048F229C5D1A60019C9FE /* SDWebImage */; };
 		E2F048F629C5D2550019C9FE /* PosterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F048F529C5D2550019C9FE /* PosterCollectionViewCell.swift */; };
 		E2F048F829C5D2CA0019C9FE /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F048F729C5D2CA0019C9FE /* PostCollectionViewCell.swift */; };
@@ -73,7 +79,13 @@
 		E23B6D1329C0F4C8006947B7 /* SignInHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInHeaderView.swift; sourceTree = "<group>"; };
 		E23B6D1529C0F594006947B7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E23B6D1729C102E0006947B7 /* IGTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGTextField.swift; sourceTree = "<group>"; };
+		E28EBFF929CF848900B8BB0E /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
+		E28EBFFB29D063E400B8BB0E /* NotificationCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCellType.swift; sourceTree = "<group>"; };
+		E28EBFFF29D0691500B8BB0E /* NotificationCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCellViewModel.swift; sourceTree = "<group>"; };
 		E2B1047529CB2A850030DA42 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
+		E2C0D7D229CF823500540B5B /* FollowNotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowNotificationTableViewCell.swift; sourceTree = "<group>"; };
+		E2C0D7D429CF825800540B5B /* LikeNotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeNotificationTableViewCell.swift; sourceTree = "<group>"; };
+		E2C0D7D629CF826500540B5B /* CommentNotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentNotificationTableViewCell.swift; sourceTree = "<group>"; };
 		E2F048F529C5D2550019C9FE /* PosterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterCollectionViewCell.swift; sourceTree = "<group>"; };
 		E2F048F729C5D2CA0019C9FE /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
 		E2F048F929C5D2ED0019C9FE /* PostLikesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLikesCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -127,6 +139,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E28EBFFD29D068DF00B8BB0E /* PostGroup */ = {
+			isa = PBXGroup;
+			children = (
+				E237A03129C5191E0049714A /* PosterCollectionViewCellViewModel.swift */,
+				E237A03329C5197E0049714A /* PostCollectionViewCellViewModel.swift */,
+				E237A03529C519A90049714A /* PostActionsCollectionViewCellVIewModel.swift */,
+				E237A03729C519D60049714A /* PostLikesCollectionViewCellViewModel.swift */,
+				E237A03929C51A140049714A /* PostCaptionCollectionViewCellViewModel.swift */,
+				E237A03B29C51A470049714A /* PostDateTimeCollectionViewCellViewModel.swift */,
+			);
+			path = PostGroup;
+			sourceTree = "<group>";
+		};
+		E28EBFFE29D068FF00B8BB0E /* NotificationGroup */ = {
+			isa = PBXGroup;
+			children = (
+				E28EBFFF29D0691500B8BB0E /* NotificationCellViewModel.swift */,
+			);
+			path = NotificationGroup;
+			sourceTree = "<group>";
+		};
+		E2C0D7D129CF821800540B5B /* NotificationCells */ = {
+			isa = PBXGroup;
+			children = (
+				E2C0D7D229CF823500540B5B /* FollowNotificationTableViewCell.swift */,
+				E2C0D7D429CF825800540B5B /* LikeNotificationTableViewCell.swift */,
+				E2C0D7D629CF826500540B5B /* CommentNotificationTableViewCell.swift */,
+			);
+			path = NotificationCells;
+			sourceTree = "<group>";
+		};
 		E2F048F429C5D2330019C9FE /* HomeCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +225,7 @@
 		E2FCA45B29BF38C100857F8D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E2C0D7D129CF821800540B5B /* NotificationCells */,
 				E2F048F429C5D2330019C9FE /* HomeCells */,
 				E2FCA44829BF329B00857F8D /* LaunchScreen.storyboard */,
 				E23B6D1329C0F4C8006947B7 /* SignInHeaderView.swift */,
@@ -199,6 +243,7 @@
 				E2FCA47D29BF3B8200857F8D /* Relationship.swift */,
 				E2FCA47F29BF3B9100857F8D /* Notification.swift */,
 				E237A03D29C51AD80049714A /* HomeFeedCellType.swift */,
+				E28EBFFB29D063E400B8BB0E /* NotificationCellType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -206,12 +251,8 @@
 		E2FCA45D29BF38D200857F8D /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				E237A03129C5191E0049714A /* PosterCollectionViewCellViewModel.swift */,
-				E237A03329C5197E0049714A /* PostCollectionViewCellViewModel.swift */,
-				E237A03529C519A90049714A /* PostActionsCollectionViewCellVIewModel.swift */,
-				E237A03729C519D60049714A /* PostLikesCollectionViewCellViewModel.swift */,
-				E237A03929C51A140049714A /* PostCaptionCollectionViewCellViewModel.swift */,
-				E237A03B29C51A470049714A /* PostDateTimeCollectionViewCellViewModel.swift */,
+				E28EBFFE29D068FF00B8BB0E /* NotificationGroup */,
+				E28EBFFD29D068DF00B8BB0E /* PostGroup */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -224,6 +265,7 @@
 				E2FCA48529BF3BCC00857F8D /* StorageManager.swift */,
 				E2FCA48729BF3BD600857F8D /* AnalyticsManagerj.swift */,
 				E2FCA48929BF3BE000857F8D /* HapticsManager.swift */,
+				E28EBFF929CF848900B8BB0E /* NotificationsManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -356,8 +398,12 @@
 				E2FCA46B29BF3AE000857F8D /* TabBarViewController.swift in Sources */,
 				E2FCA48029BF3B9100857F8D /* Notification.swift in Sources */,
 				E2FCA48629BF3BCC00857F8D /* StorageManager.swift in Sources */,
+				E28EBFFA29CF848900B8BB0E /* NotificationsManager.swift in Sources */,
 				E2FCA47429BF3B3200857F8D /* ListViewController.swift in Sources */,
+				E28EBFFC29D063E400B8BB0E /* NotificationCellType.swift in Sources */,
 				E2F048F829C5D2CA0019C9FE /* PostCollectionViewCell.swift in Sources */,
+				E2C0D7D329CF823500540B5B /* FollowNotificationTableViewCell.swift in Sources */,
+				E2C0D7D729CF826500540B5B /* CommentNotificationTableViewCell.swift in Sources */,
 				E2FCA48829BF3BD600857F8D /* AnalyticsManagerj.swift in Sources */,
 				E237A03629C519A90049714A /* PostActionsCollectionViewCellVIewModel.swift in Sources */,
 				E2FCA47629BF3B3D00857F8D /* PostViewController.swift in Sources */,
@@ -377,9 +423,11 @@
 				E23B6D1829C102E0006947B7 /* IGTextField.swift in Sources */,
 				E237A03E29C51AD80049714A /* HomeFeedCellType.swift in Sources */,
 				E237A03829C519D60049714A /* PostLikesCollectionViewCellViewModel.swift in Sources */,
+				E28EC00029D0691500B8BB0E /* NotificationCellViewModel.swift in Sources */,
 				E237A03429C5197E0049714A /* PostCollectionViewCellViewModel.swift in Sources */,
 				E2FCA48429BF3BC000857F8D /* DatabaseManager.swift in Sources */,
 				E2337F9A29C872600062EB08 /* PostEditViewController.swift in Sources */,
+				E2C0D7D529CF825800540B5B /* LikeNotificationTableViewCell.swift in Sources */,
 				E2FCA47E29BF3B8200857F8D /* Relationship.swift in Sources */,
 				E237A03A29C51A140049714A /* PostCaptionCollectionViewCellViewModel.swift in Sources */,
 				E2FCA47C29BF3B7400857F8D /* Post.swift in Sources */,
