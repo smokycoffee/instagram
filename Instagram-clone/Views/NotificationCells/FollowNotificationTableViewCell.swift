@@ -68,7 +68,7 @@ class FollowNotificationTableViewCell: UITableViewCell {
         profilPictureImageView.layer.cornerRadius = imageSize / 2
         
         let labelSize = label.sizeThatFits(CGSize(
-            width: contentView.width - profilPictureImageView.width - followButton.width - 46
+            width: contentView.width - profilPictureImageView.width - followButton.width - 30
             , height: contentView.height))
         
         label.snp.makeConstraints { make in

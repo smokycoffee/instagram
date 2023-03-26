@@ -63,15 +63,17 @@ class CommentNotificationTableViewCell: UITableViewCell {
         let postSize: CGFloat = contentView.height - 6
         postImageView.snp.makeConstraints { make in
             make.width.height.equalTo(postSize)
-            make.leading.equalTo(contentView.width - postSize - 10 )
-            make.top.equalTo(contentView.top - 3).offset(3)
+//            make.leading.equalTo(contentView.width - postSize - 10 )
+            make.top.equalTo(contentView.snp.top).offset(3)
+            make.trailing.equalTo(contentView.snp.trailing).offset(-10)
         }
         
-        let labelSize = label.sizeThatFits(CGSize(width: contentView.width - profilPictureImageView.right - 25 - postSize, height: contentView.height))
+        let labelSize = label.sizeThatFits(CGSize(width: contentView.width - profilPictureImageView.width - postSize - 30, height: contentView.height))
         label.snp.makeConstraints { make in
+//            make.width.equalTo(labelSize.width)
+            make.width.lessThanOrEqualTo(labelSize.width)
             make.leading.equalTo(profilPictureImageView.snp.trailing).offset(10)
             //            make.centerY.equalTo(profilPictureImageView.snp.centerY)
-            make.width.equalTo(labelSize.width)
             make.height.equalTo(contentView.height)
         }
     }
@@ -87,6 +89,5 @@ class CommentNotificationTableViewCell: UITableViewCell {
         profilPictureImageView.sd_setImage(with: viewModel.profilePictureURL)
         postImageView.sd_setImage(with: viewModel.postURL)
         label.text = viewModel.username + " commented on your post"
-        
     }
 }
