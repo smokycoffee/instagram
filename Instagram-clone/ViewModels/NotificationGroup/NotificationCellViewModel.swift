@@ -7,19 +7,19 @@
 
 import Foundation
 
-struct LikeNotificationCellViewModel {
+struct LikeNotificationCellViewModel: Equatable {
     let username: String
     let profilePictureURL: URL
     let postURL: URL
 }
 
-struct FollowNotificationCellViewModel {
+struct FollowNotificationCellViewModel: Equatable {
     let username: String
     let profilePictureURL: URL
     let isCurrentUserFollowing: Bool
 }
 
-struct CommentNotificationCellViewModel {
+struct CommentNotificationCellViewModel: Equatable {
     let username: String
     let profilePictureURL: URL
     let postURL: URL

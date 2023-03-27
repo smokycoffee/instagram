@@ -20,6 +20,7 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
     }()
     
     private var viewModels: [NotificationCellType] = []
+    private var models: [IGNotification] = []
     
     // Mark: - Lifecycle
     
@@ -96,6 +97,7 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
                 fatalError()
             }
             cell.configure(with: viewModel)
+            cell.delegate = self
             return cell
             
         case .like(viewModel: let viewModel):
@@ -103,17 +105,106 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
                 fatalError()
             }
             cell.configure(with: viewModel)
+            cell.delegate = self
             return cell
         case .comment(viewModel: let viewModel):
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CommentNotificationTableViewCell.identifier, for: indexPath) as? CommentNotificationTableViewCell else {
                 fatalError()
             }
             cell.configure(with: viewModel)
+            cell.delegate = self
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let cellType = viewModels[indexPath.row]
+        let username: String
+        switch cellType {
+            
+        case .follow(viewModel: let viewModel):
+            username = viewModel.username
+        case .like(viewModel: let viewModel):
+            username = viewModel.username
+        case .comment(viewModel: let viewModel):
+            username = viewModel.username
+        }
+        
+        // fix the function to use username (the below is for an em
+        
+        DatabaseManager.shared.findUser(with: username) { [weak self] user in
+            guard let user = user else {
+                return
+            }
+            DispatchQueue.main.async {
+                let vc = ProfileViewController(user: user)
+                self?.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
+        
+    }
+}
+
+// MARK - Actions
+
+extension NotificationsViewController: LikeNotificationTableViewCellDelegate, CommentNotificationTableViewCellDelegate, FollowNotificationTableViewCellDelegate {
+    func followNotificationTableViewCell(_cel: FollowNotificationTableViewCell, didTapButton isFollowing: Bool, viewModel: FollowNotificationCellViewModel) {
+        let username = viewModel.username
+//        DatabaseManager.shared.updateRelationship(state: isFollowing ? .follow : .unfollow, for: username) { success in
+//
+//        }
+    }
+    
+    func likeNotificationTableViewCell(_cell: LikeNotificationTableViewCell, didTapPost viewModel: LikeNotificationCellViewModel) {
+        guard let index = viewModels.firstIndex(where: {
+            switch $0 {
+                
+            case .follow, .comment:
+                return false
+            case .like(viewModel: let current):
+                return current == viewModel
+            }
+        }) else {
+            return
+        }
+        
+        openPost(with: index, username: viewModel.username)
+        // find post by id from particular user
+        
+    }
+    
+    func commentNotificationTableViewCell(_cell: CommentNotificationTableViewCell, didTapPost viewModel: CommentNotificationCellViewModel) {
+        guard let index = viewModels.firstIndex(where: {
+            switch $0 {
+                
+            case .like, .follow:
+                return false
+            case .comment(viewModel: let current):
+                return current == viewModel
+            }
+        }) else {
+            return
+        }
+        
+        openPost(with: index, username: viewModel.username)
+    }
+    
+    
+    func openPost(with index: Int, username: String) {
+        print(index)
+        
+        guard index < models.count else {
+            return
+        }
+        
+        let model = models[index]
+        let username = username
+        guard let postID = model.postId else {
+            return
+        }
     }
 }

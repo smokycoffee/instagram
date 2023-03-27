@@ -7,9 +7,16 @@
 
 import UIKit
 
+protocol LikeNotificationTableViewCellDelegate: AnyObject {
+    func likeNotificationTableViewCell(_cell: LikeNotificationTableViewCell, didTapPost viewModel: LikeNotificationCellViewModel)
+}
+
 class LikeNotificationTableViewCell: UITableViewCell {
 
     static let identifier = "LikeNotificationTableViewCell"
+    
+    private var viewModel: LikeNotificationCellViewModel?
+    weak var delegate: LikeNotificationTableViewCellDelegate?
     
     private let profilPictureImageView: UIImageView = {
         let imageView = UIImageView()
@@ -39,14 +46,26 @@ class LikeNotificationTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        selectionStyle = .none
         contentView.clipsToBounds = true
         contentView.addSubview(profilPictureImageView)
         contentView.addSubview(label)
         contentView.addSubview(postImageView)
+        
+        postImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapPost))
+        postImageView.addGestureRecognizer(tap)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func didTapPost() {
+        guard let vm = viewModel else {
+            return
+        }
+        delegate?.likeNotificationTableViewCell(_cell: self, didTapPost: vm)
     }
     
     override func layoutSubviews() {
@@ -84,6 +103,7 @@ class LikeNotificationTableViewCell: UITableViewCell {
     }
     
     public func configure(with viewModel: LikeNotificationCellViewModel) {
+        self.viewModel = viewModel
         profilPictureImageView.sd_setImage(with: viewModel.profilePictureURL)
         postImageView.sd_setImage(with: viewModel.postURL)
         label.text = viewModel.username + " liked your post"
