@@ -56,7 +56,7 @@
 		E2FCA47A29BF3B6C00857F8D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FCA47929BF3B6C00857F8D /* User.swift */; };
 		E2FCA47C29BF3B7400857F8D /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FCA47B29BF3B7400857F8D /* Post.swift */; };
 		E2FCA47E29BF3B8200857F8D /* Relationship.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FCA47D29BF3B8200857F8D /* Relationship.swift */; };
-		E2FCA48029BF3B9100857F8D /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FCA47F29BF3B9100857F8D /* Notification.swift */; };
+		E2FCA48029BF3B9100857F8D /* IGNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FCA47F29BF3B9100857F8D /* IGNotification.swift */; };
 		E2FCA48229BF3BAB00857F8D /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FCA48129BF3BAB00857F8D /* AuthManager.swift */; };
 		E2FCA48429BF3BC000857F8D /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FCA48329BF3BC000857F8D /* DatabaseManager.swift */; };
 		E2FCA48629BF3BCC00857F8D /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FCA48529BF3BCC00857F8D /* StorageManager.swift */; };
@@ -113,7 +113,7 @@
 		E2FCA47929BF3B6C00857F8D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E2FCA47B29BF3B7400857F8D /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		E2FCA47D29BF3B8200857F8D /* Relationship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relationship.swift; sourceTree = "<group>"; };
-		E2FCA47F29BF3B9100857F8D /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		E2FCA47F29BF3B9100857F8D /* IGNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGNotification.swift; sourceTree = "<group>"; };
 		E2FCA48129BF3BAB00857F8D /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		E2FCA48329BF3BC000857F8D /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		E2FCA48529BF3BCC00857F8D /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
@@ -241,7 +241,7 @@
 				E2FCA47929BF3B6C00857F8D /* User.swift */,
 				E2FCA47B29BF3B7400857F8D /* Post.swift */,
 				E2FCA47D29BF3B8200857F8D /* Relationship.swift */,
-				E2FCA47F29BF3B9100857F8D /* Notification.swift */,
+				E2FCA47F29BF3B9100857F8D /* IGNotification.swift */,
 				E237A03D29C51AD80049714A /* HomeFeedCellType.swift */,
 				E28EBFFB29D063E400B8BB0E /* NotificationCellType.swift */,
 			);
@@ -396,7 +396,7 @@
 			files = (
 				E2FCA47229BF3B2400857F8D /* CaptionViewController.swift in Sources */,
 				E2FCA46B29BF3AE000857F8D /* TabBarViewController.swift in Sources */,
-				E2FCA48029BF3B9100857F8D /* Notification.swift in Sources */,
+				E2FCA48029BF3B9100857F8D /* IGNotification.swift in Sources */,
 				E2FCA48629BF3BCC00857F8D /* StorageManager.swift in Sources */,
 				E28EBFFA29CF848900B8BB0E /* NotificationsManager.swift in Sources */,
 				E2FCA47429BF3B3200857F8D /* ListViewController.swift in Sources */,

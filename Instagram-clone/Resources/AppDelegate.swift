@@ -17,6 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         FirebaseApp.configure()
+        
+        // Add dummy notification for current user
+//
+//        let id = NotificationsManager.newIdentifier()
+//        let model = IGNotification(identifier: id, notificationType: 1, profilePictureURL: "https://i.pinimg.com/originals/c0/97/8c/c0978c0f0ac5fb1619687ab6bbb40dd7.jpg" , username: "David", dateString: String.date(from: Date()) ?? "Now", isFollowing: nil, postId: "123", postURL: "https://i.pinimg.com/originals/c0/97/8c/c0978c0f0ac5fb1619687ab6bbb40dd7.jpg")
+//        NotificationsManager.shared.create(notification: model, for: "ambrosy")
+//
         return true
     }
 
