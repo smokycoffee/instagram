@@ -2,8 +2,6 @@
 
 Building an instagram clone using UIKit, SnapKit and Firebase to demonstrate and teach modern iOS Development and Stacks.
 
-Building in public with daily updates.
-
 ## Getting Started
 
 Create an Firebase project on Firebase with the iOS SDK. And drag the Google-Services.info.plist into the cloned project folder. 
